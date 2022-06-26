@@ -1,6 +1,6 @@
 package SuanFa_RuMen;
 
-public class defangIPaddr_1108 {
+public class DefangIPaddr_1108 {
     public String defangIPaddr(String address) {
         char[] c = address.toCharArray();
         String result = "";
