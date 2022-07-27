@@ -2,14 +2,10 @@ package SuanFa_RuMen;
 
 import java.util.Arrays;
 
-public class CheckInclusion_567 {
-    public static void main(String[] args) {
-        System.out.println(checkInclusion("ab", "eidboaoo"));
-    }
-
-    public static boolean checkInclusion(String s1, String s2) {
+public class IsAnagram_242 {
+    public boolean isAnagram(String s1, String s2) {
         int n = s1.length(), m = s2.length();
-        if (n > m) {
+        if (n > m || m > n) {
             return false;
         }
         int[] cnt1 = new int[26];
