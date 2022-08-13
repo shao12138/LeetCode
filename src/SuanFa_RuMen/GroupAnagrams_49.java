@@ -1,8 +1,6 @@
 package SuanFa_RuMen;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class GroupAnagrams_49 {
     public static void main(String[] args) {
@@ -11,25 +9,39 @@ public class GroupAnagrams_49 {
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
-        List a = new ArrayList();
+        Stack<String> stack = new Stack();
         for (int i = 0; i < strs.length; i++) {
-            if (strs[i] != "0") {
-                ArrayList b = new ArrayList();
-                b.add(strs[i]);
-                for (int j = i + 1; j < strs.length; j++) {
-                    if (strs[j] != "0") {
-                        if (isAnagram(strs[i], strs[j])) {
-                            b.add(strs[j]);
-                            strs[j] = "0";
-                        }
-                    }
-                }
-                if (b.size() != 0) {
-                    a.add(b);
+            stack.push(strs[i]);
+        }
+        HashMap<String, ArrayList> hashMap = new HashMap<>();
+        while (!stack.isEmpty()) {
+            String temp = stack.pop();
+            Set<String> keys = hashMap.keySet();
+            Iterator<String> iterator = keys.iterator();
+            boolean flag = false;
+            String f = "";
+            while (iterator.hasNext()) {
+                f = iterator.next();
+                if (isAnagram(temp, f)) {
+                    flag = true;
+                    break;
                 }
             }
+            if (flag) {
+                hashMap.get(f).add(temp);
+            } else {
+                ArrayList t = new ArrayList();
+                t.add(temp);
+                hashMap.put(temp, t);
+            }
         }
-        return a;
+        ArrayList result = new ArrayList();
+        Collection<ArrayList> value = hashMap.values();
+        Iterator<ArrayList> iterator2 = value.iterator();
+        while (iterator2.hasNext()) {
+            result.add(iterator2.next());
+        }
+        return result;
     }
 
     public static boolean isAnagram(String s1, String s2) {
