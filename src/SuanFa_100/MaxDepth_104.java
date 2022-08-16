@@ -1,7 +1,5 @@
 package SuanFa_100;
 
-import SuanFa_800.TreeNode;
-
 public class MaxDepth_104 {
     public int maxDepth(TreeNode root) {
         if (root == null)

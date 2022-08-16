@@ -1,7 +1,5 @@
 package SuanFa_1;
 
-import SuanFa_800.ListNode;
-
 public class SwapPairs_24 {
         public ListNode swapPairs(ListNode head) {
 

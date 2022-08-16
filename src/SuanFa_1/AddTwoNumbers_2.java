@@ -1,7 +1,5 @@
 package SuanFa_1;
 
-import SuanFa_800.ListNode;
-
 import java.util.Stack;
 
 public class AddTwoNumbers_2 {

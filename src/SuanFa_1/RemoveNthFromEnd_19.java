@@ -1,7 +1,5 @@
 package SuanFa_1;
 
-import SuanFa_800.ListNode;
-
 public class RemoveNthFromEnd_19 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         int lenght = 0;

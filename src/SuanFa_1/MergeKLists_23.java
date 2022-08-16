@@ -1,6 +1,5 @@
 package SuanFa_1;
 
-import SuanFa_800.ListNode;
 
 public class MergeKLists_23 {
     public static void main(String[] args) {

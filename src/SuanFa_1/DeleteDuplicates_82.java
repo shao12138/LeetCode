@@ -1,7 +1,5 @@
 package SuanFa_1;
 
-import SuanFa_800.ListNode;
-
 public class DeleteDuplicates_82 {
     public static void main(String[] args) {
         ListNode a1 = new ListNode(1);

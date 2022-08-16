@@ -1,7 +1,5 @@
 package SuanFa_100;
 
-import SuanFa_800.TreeNode;
-
 import java.util.*;
 
 public class PostorderTraversal_145 {

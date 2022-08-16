@@ -1,7 +1,5 @@
 package SuanFa_100;
 
-import SuanFa_800.TreeNode;
-
 public class HasPathSum_112 {
 
     boolean ans = false;

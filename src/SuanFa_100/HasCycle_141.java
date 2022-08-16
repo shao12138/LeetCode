@@ -1,7 +1,5 @@
 package SuanFa_100;
 
-import SuanFa_800.ListNode;
-
 import java.util.ArrayList;
 
 public class HasCycle_141 {
