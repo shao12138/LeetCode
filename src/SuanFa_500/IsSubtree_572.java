@@ -1,7 +1,5 @@
 package SuanFa_500;
 
-import SuanFa_800.TreeNode;
-
 public class IsSubtree_572 {
     public boolean isSubtree(TreeNode s, TreeNode t) {
         return dfs(s, t);

@@ -1,7 +1,5 @@
 package SuanFa_700;
 
-import SuanFa_600.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 

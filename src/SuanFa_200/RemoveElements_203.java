@@ -1,7 +1,5 @@
 package SuanFa_200;
 
-import SuanFa_800.ListNode;
-
 public class RemoveElements_203 {
     public static void main(String[] args) {
         ListNode a = new ListNode(1);

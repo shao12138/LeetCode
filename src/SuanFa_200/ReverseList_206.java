@@ -1,7 +1,5 @@
 package SuanFa_200;
 
-import SuanFa_800.ListNode;
-
 public class ReverseList_206 {
     public static void main(String[] args) {
         ListNode a1=  new ListNode(1);
