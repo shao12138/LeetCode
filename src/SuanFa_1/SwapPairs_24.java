@@ -1,7 +1,7 @@
 package SuanFa_1;
 
 public class SwapPairs_24 {
-        public ListNode swapPairs(ListNode head) {
+    public ListNode swapPairs(ListNode head) {
 
         ListNode dummyNode = new ListNode(0);
         dummyNode.next = head;
