@@ -2,26 +2,30 @@ package SuanFa_1;
 
 public class MySqrt_69 {
     public static void main(String[] args) {
-        mySqrt(6);
+        mySqrt(8);
     }
 
-    public static int mySqrt(int x) {
-        int left = 0;
-        int right = x;
-        while (left < right) {
-            int middle = (left + right) / 2;
-            if (middle * middle == x) {
+    public static int mySqrt(int num) {
+        if (num == 1) {
+            return 1;
+        }
+        if (num == 2) {
+            return 1;
+        }
+        int left = 1;
+        int right = num;
+        int middle = 0;
+        while (left <= right) {
+            middle = left + (right - left) / 2;
+            int temp = num / middle;
+            if (temp > middle) {
+                left = middle + 1;
+            } else if (temp < middle) {
+                right = middle - 1;
+            } else if (temp == middle) {
                 return middle;
-            } else if (middle * middle < x && (middle + 1) * (middle + 1) > x) {
-                return middle;
-            } else if (middle * middle > x && (middle - 1) * (middle - 1) < x) {
-                return middle - 1;
-            } else if (middle > x) {
-                left = middle;
-            } else {
-                right = middle;
             }
         }
-        return 0;
+        return right;
     }
 }
