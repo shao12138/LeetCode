@@ -1,4 +1,4 @@
-package SuanFa_other;
+package SuanFa_1100;
 
 public class DistanceBetweenBusStops_1184 {
     public static void main(String[] args) {

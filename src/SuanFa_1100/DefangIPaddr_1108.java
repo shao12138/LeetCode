@@ -1,4 +1,4 @@
-package SuanFa_other;
+package SuanFa_1100;
 
 public class DefangIPaddr_1108 {
     public String defangIPaddr(String address) {
