@@ -1,4 +1,4 @@
-package SuanFa_other;
+package SuanFa_1100;
 
 public class LongestCommonSubsequence_1143 {
     public int longestCommonSubsequence(String word1, String word2) {

@@ -1,4 +1,4 @@
-package SuanFa_other;
+package SuanFa_1000;
 
 import java.util.LinkedList;
 import java.util.Queue;
