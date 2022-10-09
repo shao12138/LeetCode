@@ -1,8 +1,7 @@
 package SuanFa_1500;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
+import java.util.Arrays;
 import java.util.List;
 
 public class RangeSum_1508 {
@@ -12,33 +11,39 @@ public class RangeSum_1508 {
     }
 
     public static int rangeSum(int[] nums, int n, int left, int right) {
-        List res = new ArrayList<>();
-        // 从 1 开始是题目的设定
-        Deque<Integer> path = new ArrayDeque<>();
-        for (int k = 1; k <= nums.length; k++) {
-            dfs(nums, k, 0, path, res);
+        int length = (1 + n) * n / 2;
+        final int MOD = 1000000000 + 7;
+        int[] result = new int[length];
+        result = continuousSubList(nums, length);
+        Arrays.sort(result);
+        long sum = 0;
+        for (int i = left - 1; i < right - 1; i++) {
+            sum += result[i];
         }
-        return 1;
+        return (int) (sum % MOD);
     }
 
-    public static void dfs(int[] nums, int k, int begin, Deque<Integer> path, List res) {
-        // 递归终止条件是：path 的长度等于 k
-        if (path.size() == k) {
-//            int sum = 0;
-//            while (!path.isEmpty()) {
-//                sum += path.pop();
-//            }
-            res.add(new ArrayList<>(path));
-            return;
+    public static int[] continuousSubList(int[] arr, int length) {
+        int[] result = new int[length];
+        List<Integer> resultList = new ArrayList<>();
+        if (arr == null || arr.length < 1) {
+            return null;
         }
-        // 遍历可能的搜索起点
-        for (int i = begin; i < nums.length; i++) {
-            // 向路径变量里添加一个数
-            path.addLast(nums[i]);
-            // 下一轮搜索，设置的搜索起点要加 1，因为组合数理不允许出现重复的元素
-            dfs(nums, k, i + 1, path, res);
-            // 重点理解这里：深度优先遍历有回头的过程，因此递归之前做了什么，递归之后需要做相同操作的逆向操作
-           path.removeLast();
+        // 对于每个位置都求包含他本身在内的所有连续子数组
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+                // 从 i ~ j位置求得一个子数组
+                int temp = 0;
+                for (int k = i; k <= j; k++) {
+                    temp += arr[k];
+                }
+                resultList.add(temp);
+            }
         }
+        for (int i = 0; i < length; i++) {
+            result[i] = resultList.get(i);
+        }
+        // 返回最终结果
+        return result;
     }
 }
