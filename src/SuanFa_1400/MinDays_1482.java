@@ -1,56 +1,49 @@
 package SuanFa_1400;
 
-import java.util.Arrays;
-
 public class MinDays_1482 {
     public static void main(String[] args) {
-        int[] bloomDay = new int[]{7, 7, 7, 7, 12, 7, 7};
-        int m = 2;
-        int k = 3;
+        int[] bloomDay = new int[]{1,10,3,10,2};
+        int m = 3;
+        int k = 1;
         minDays(bloomDay, m, k);
     }
 
     public static int minDays(int[] bloomDay, int m, int k) {
-        if (m * k > bloomDay.length) {
+        if (m > bloomDay.length / k) {
             return -1;
         }
-        int[] day = bloomDay.clone();
-        Arrays.sort(day);
-        int left = day[0];
-        int right = day[day.length - 1];
-        while (left < right) {
-            int middle = left + (right - left) / 2;
-            int result = 0;
-            int[] temp = bloomDay.clone();
-            for (int i = 0; i < temp.length; i++) {
-                temp[i] -= middle;
-                if (temp[i] < 0) {
-                    temp[i] = 0;
-                }
-            }
-            for (int i = 0; i < bloomDay.length - k + 1; i++) {
-                int count = 0;
-                for (int j = 0; j < k; j++) {
-                    if (temp[i] == temp[i + j] && temp[i] == 0) {
-                        count++;
-                    } else {
-                        break;
-                    }
-                }
-                if (count == k) {
-                    for (int j = 0; j < k; j++) {
-                        temp[i + j] = -1;
-                    }
-                    result++;
-                }
-            }
-            if (result < m) {
-                left = middle + 1;
-            }
-            if (result >= m) {
-                right = middle;
+        int low = Integer.MAX_VALUE, high = 0;
+        int length = bloomDay.length;
+        for (int i = 0; i < length; i++) {
+            low = Math.min(low, bloomDay[i]);
+            high = Math.max(high, bloomDay[i]);
+        }
+        while (low < high) {
+            int days = (high - low) / 2 + low;
+            if (canMake(bloomDay, days, m, k)) {
+                high = days;
+            } else {
+                low = days + 1;
             }
         }
-        return right;
+        return low;
+    }
+
+    public static boolean canMake(int[] bloomDay, int days, int m, int k) {
+        int bouquets = 0;
+        int flowers = 0;
+        int length = bloomDay.length;
+        for (int i = 0; i < length && bouquets < m; i++) {
+            if (bloomDay[i] <= days) {
+                flowers++;
+                if (flowers == k) {
+                    bouquets++;
+                    flowers = 0;
+                }
+            } else {
+                flowers = 0;
+            }
+        }
+        return bouquets >= m;
     }
 }
