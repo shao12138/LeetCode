@@ -12,7 +12,9 @@ public class ReverseList_24 {
             succ = p.next;
             p.next = front;
             front = p;
+            p = succ;
         }
-        return head;
+        head.next = null;
+        return front;
     }
 }
