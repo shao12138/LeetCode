@@ -1,41 +1,37 @@
 import java.util.Scanner;
 
 public class Main2 {
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int[] day = new int[n];
-        for (int i = 0; i < n; i++) {
-            day[i] = in.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        String[] s = new String[n * 2];
+        for (int i = 0; i < n * 2; i++) {
+            s[i] = scanner.next();
         }
-        int[] mean = new int[n];
-        double sum = 0.0;
-        int[] middle = new int[n];
-        for (int i = 0; i < n; i++) {
-            sum += day[i];
-            double f = i + 1.0;
-            mean[i] = (int) Math.ceil(sum / f);
-            if (i % 2 == 0) {
-                middle[i] = day[(i) / 2];
+        for (int i = 0; i < n * 2 - 1; ) {
+            String a = s[i];
+            String b = s[i + 1];
+            a = a.replaceAll("m", "");
+            a = a.replaceAll("h", "");
+            a = a.replaceAll("y", "");
+            b = b.replaceAll("m", "");
+            b = b.replaceAll("h", "");
+            b = b.replaceAll("y", "");
+            i += 2;
+            if (a.equals(b)) {
+                System.out.println("Yes");
             } else {
-                middle[i] = (int) Math.ceil((day[i / 2] + day[i / 2 + 1]) / 2.0);
+                System.out.println("No");
             }
         }
-        for (int i = 0; i < n; i++) {
-            if (i == n - 1) {
-                System.out.print(mean[i]);
-            } else {
-                System.out.print(mean[i] + " ");
-            }
-        }
-        System.out.println();
-        for (int i = 0; i < n; i++) {
-            if (i == n - 1) {
-                System.out.print(middle[i]);
-            } else {
-                System.out.print(middle[i] + " ");
-            }
-        }
-        System.out.println();
     }
 }
+
+
+
+
+
+
+
+
