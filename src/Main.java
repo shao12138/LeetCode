@@ -2,51 +2,48 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[][] a = new int[][]{{0, 0, 5, 5}, {4, 4, 2, 2}};
-        getWhiteCounts(a);
-    }
-
-    public static int getWhiteCounts(int[][] rects) {
-        HashSet<Integer> hashSet = new HashSet<>();
-        for (int i = 0; i < rects.length; i++) {
-            int x1 = rects[i][0];
-            int y1 = rects[i][1];
-            int x2 = rects[i][2];
-            int y2 = rects[i][3];
-
-            int minx = 0;
-            int maxx = 0;
-            int miny = 0;
-            int maxy = 0;
-
-            if (x1 < x2) {
-                minx = x1;
-                maxx = x2;
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] arr = new int[n][n];
+        int count = 1;
+        int row = 0, col = 0;
+        boolean down = true, right = false;
+        while (count <= n * n) {
+            arr[row][col] = count;
+            count++;
+            if (down) {
+                if (row == n - 1) {
+                    right = true;
+                    down = false;
+                    col++;
+                } else if (col == 0) {
+                    down = true;
+                    right = false;
+                    row++;
+                } else {
+                    row++;
+                    col--;
+                }
             } else {
-                minx = x2;
-                maxx = x1;
-            }
-            if (y1 < y2) {
-                miny = y1;
-                maxy = y2;
-            } else {
-                miny = y2;
-                maxy = y1;
-            }
-
-            for (int x = minx; x < maxx; x++) {
-                for (int y = miny; y < maxy; y++) {
-                    int[] position = new int[]{x, y};
-                    int code = x * 100000 + y;
-                    if (hashSet.contains(code)) {
-                        System.out.println("123");
-                        hashSet.remove(code);
-                    } else {
-                        hashSet.add(code);
-                    }
+                if (col == n - 1) {
+                    right = false;
+                    down = true;
+                    row++;
+                } else if (row == 0) {
+                    down = false;
+                    right = true;
+                    col++;
+                } else {
+                    row--;
+                    col++;
                 }
             }
         }
-        return 10000 - hashSet.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
